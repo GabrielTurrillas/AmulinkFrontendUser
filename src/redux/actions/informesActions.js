@@ -6,7 +6,9 @@ import {
     FETCH_NUMERO_PACIENTES_FAILURE,
 } from './types';
 
-export const fetchNumeroHorasMes = () => async dispatch => {
+// COMPONENTES: 
+//  (user): TotalHorasAtendidas
+export const getNumeroHorasMes = () => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -14,7 +16,7 @@ export const fetchNumeroHorasMes = () => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.get('api/informes/numeroHorasMes', config)
+    axios.get('api/informes/showNumeroHorasMes', config)
     .then(res => {
         dispatch({
             type: FETCH_NUMERO_HORAS_MES_SUCCESS,
@@ -29,7 +31,9 @@ export const fetchNumeroHorasMes = () => async dispatch => {
     });
 };
 
-export const fetchNumeroPacientes = () => async dispatch => {
+//COMPONENTES:
+// (user):NumeroPacientes
+export const getNumeroPaciente = () => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -37,7 +41,7 @@ export const fetchNumeroPacientes = () => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.get('api/informes/numeroPacientes', config)
+    axios.get('api/informes/showNumeroPacientes', config)
     .then(res => {
         dispatch({
             type: FETCH_NUMERO_PACIENTES_SUCCESS,

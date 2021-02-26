@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
-import { agregarSesiones, fetchTerapia } from '../../redux/actions/terapiaActions';
+import { postCreateSesion, getRetrieveTerapia } from '../../redux/actions/terapiaActions';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -21,10 +21,10 @@ const FormularioSesion = () => {
     const dispatch = useDispatch();
     const onSubmit = (data) => {
         const body = {...data, terapia, fechaSesion, fechaPago};
-        dispatch(agregarSesiones(body, idPaciente));
+        dispatch(postCreateSesion(body));
     };
     useEffect(() => {
-        dispatch(fetchTerapia(idPaciente));
+        dispatch(getRetrieveTerapia(idPaciente));
     },[dispatch, idPaciente]);
     return (    
         <Fragment>

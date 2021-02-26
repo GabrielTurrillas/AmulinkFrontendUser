@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSesion } from '../../redux/actions/terapiaActions';
+import { getRetrieveSesion } from '../../redux/actions/terapiaActions';
 
 /* Containers
     FichaSesion.js
@@ -13,7 +13,7 @@ const SesionDetalle = () => {
     const sesion = useSelector(state => state.terapiaReducer.sesion)
 
     useEffect(()=>{
-        dispatch(fetchSesion(idSesion));
+        dispatch(getRetrieveSesion(idSesion));
     }, [dispatch, idSesion])
     
     const { pago, asistio, fechaSesion, modalidad, notasSesion, fechaPago } = sesion

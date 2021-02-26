@@ -15,11 +15,11 @@ const PacienteDetalle = () => {
     const terapia = useSelector(state => state.terapiaReducer.terapia);
 
     useEffect(() => {
-        dispatch(fetchPacienteDetalle(idPaciente));
+        dispatch(getRetrievePaciente(idPaciente));
     },[dispatch, idPaciente]);
 
     useEffect(() => {
-        dispatch(fetchTerapia(idPaciente));
+        dispatch(getRetrieveTerapia(idPaciente));
     },[dispatch, idPaciente]);
 
     

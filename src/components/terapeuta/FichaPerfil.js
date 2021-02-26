@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchPerfil } from '../../redux/actions/terapeutaActions';
+import { getRetrievePerfilTerapeuta } from '../../redux/actions/terapeutaActions';
 
 /* Containers
     Perfil.js
@@ -12,7 +12,7 @@ const FichaPerfil = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchPerfil());
+        dispatch(getRetrievePerfilTerapeuta());
     }, [dispatch]);
 
     const { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, fechaNacimiento } = perfil;

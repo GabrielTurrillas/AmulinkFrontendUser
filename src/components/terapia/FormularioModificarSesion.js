@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import { fetchSesion } from '../../redux/actions/terapiaActions';
-import { putSesion } from '../../redux/actions/terapiaActions';
+import { putUpdateSesion } from '../../redux/actions/terapiaActions';
 import { useParams } from 'react-router-dom';
 
 const FormularioModificarSesion = () => {
@@ -14,6 +14,7 @@ const FormularioModificarSesion = () => {
     const [fechaSesion, setFechaSesion] = useState(new Date())
     const [fechaPago, setFechaPago] = useState(new Date())
     const { terapia, pago, asistio, fechaSesion:fechaSesionDate, modalidad, notasSesion, fechaPago:fechaPagoDate } = sesion || {}
+    
     useEffect(() => {
         dispatch(fetchSesion());
         setFechaSesion(new Date(fechaSesionDate))
@@ -23,7 +24,7 @@ const FormularioModificarSesion = () => {
     const onSubmit = (data) => {
         const { pago, asistio, modalidad, notasSesion } = data
         const body = JSON.stringify({terapia, pago, asistio, modalidad, notasSesion, fechaPago, fechaSesion})
-        dispatch(putSesion(idSesion, body));        
+        dispatch(putUpdateSesion(idSesion, body));        
     };
 
     return (

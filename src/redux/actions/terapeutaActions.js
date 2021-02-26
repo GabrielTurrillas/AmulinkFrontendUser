@@ -6,7 +6,9 @@ import {
     PUT_PERFIL_FAILURE,
 } from './types';
 
-export const fetchPerfil = () => async dispatch => {
+//COMPONENTES: 
+//(user): FichaPerfil, FormularioPerfil
+export const getRetrievePerfilTerapeuta = () => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -14,7 +16,7 @@ export const fetchPerfil = () => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.get('/api/terapeuta/perfil', config)
+    axios.get('/api/terapeuta/retrievePerfilTerapeuta', config)
     .then(res => {
         dispatch({
             type: FETCH_PERFIL_SUCCESS,
@@ -30,7 +32,9 @@ export const fetchPerfil = () => async dispatch => {
     });
 };
 
-export const putPerfil = (body) => async dispatch => {
+//COMPONENTES:
+//(user): FormularioPerfil
+export const putUpdatePerfil = (body) => async dispatch => {
     const config = {
         headers:{
             'Content-Type': 'application/json',
@@ -38,7 +42,7 @@ export const putPerfil = (body) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.put("/api/terapeuta/modificar_perfil", body, config)
+    axios.put("/api/terapeuta/updatePerfilTerapeuta", body, config)
     .then(res => {
         dispatch({
             type: PUT_PERFIL_SUCCESS,

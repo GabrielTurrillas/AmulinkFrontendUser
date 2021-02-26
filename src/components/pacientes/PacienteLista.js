@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPacientes } from '../../redux/actions/pacientes';
+import { getListPacientes } from '../../redux/actions/pacientes';
 import { load_user } from '../../redux/actions/auth';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ const PacienteLista = () => {
 
     useEffect(() => {
         load_user();
-        dispatch(fetchPacientes());
+        dispatch(getListPaciente());
     }, [dispatch])
     
     if (!pacientes || !pacientes.length) {

@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import DatePicker from "react-datepicker";
-import { putPerfil, fetchPerfil } from '../../redux/actions/terapeutaActions';
+import { putPerfil, getRetrievePerfilTerapeuta } from '../../redux/actions/terapeutaActions';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -17,7 +17,7 @@ const FormularioPerfil = () => {
     const {register, handleSubmit, errors} = useForm();
 
     useEffect(() => {
-        dispatch(fetchPerfil());
+        dispatch(getRetrievePerfilTerapeuta());
     },[dispatch]);
 
     const { userAccount, rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, fechaNacimiento } = perfil
@@ -26,7 +26,7 @@ const FormularioPerfil = () => {
     const onSubmit = (data) => {
         const { userAccount, rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero } = data
         const body = JSON.stringify({userAccount, rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, fechaNacimiento});
-        dispatch(putPerfil(body));
+        dispatch(putUpdatePerfil(body));
     };
 
     return (
