@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getListPacientes } from '../../redux/actions/pacientes';
+import { getListPaciente } from '../../redux/actions/pacientesActions';
 import { load_user } from '../../redux/actions/auth';
 import { Link } from 'react-router-dom';
 

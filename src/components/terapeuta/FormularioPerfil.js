@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import DatePicker from "react-datepicker";
-import { putPerfil, getRetrievePerfilTerapeuta } from '../../redux/actions/terapeutaActions';
+import { putUpdatePerfil, getRetrievePerfilTerapeuta } from '../../redux/actions/terapeutaActions';
 
 import "react-datepicker/dist/react-datepicker.css";
 

@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
-import { fetchSesion } from '../../redux/actions/terapiaActions';
+import { getRetrieveSesion } from '../../redux/actions/terapiaActions';
 import { putUpdateSesion } from '../../redux/actions/terapiaActions';
 import { useParams } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ const FormularioModificarSesion = () => {
     const { terapia, pago, asistio, fechaSesion:fechaSesionDate, modalidad, notasSesion, fechaPago:fechaPagoDate } = sesion || {}
     
     useEffect(() => {
-        dispatch(fetchSesion());
+        dispatch(getRetrieveSesion());
         setFechaSesion(new Date(fechaSesionDate))
         setFechaPago(new Date(fechaPagoDate))
     },[dispatch, fechaPagoDate, fechaSesionDate]);

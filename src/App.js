@@ -6,7 +6,6 @@ import store from './redux/store';
 import Pacientes from './containers/pacientes/Pacientes';
 import PacienteDashBoard from './containers/pacientes/PacienteDashBoard';
 import FichaPaciente from './containers/pacientes/FichaPaciente';
-import PruebaDeComponentes from './components/PruebaDeComponentes';
 import Home from './containers/Home';
 import Login from './containers/accounts/Login';
 import Signup  from './containers/accounts/Signup';
@@ -41,7 +40,6 @@ const App = () => (
                     <Route exact path='/modificar_perfil' component={ModificarPerfil} />
                     <Route exact path='/resumen_mensual' component={ResumenMensual} />
                     <Route exact path='/modificar_sesion/:id' component={ModificarSesion} />
-                    <Route path='/prueba' component={PruebaDeComponentes} />
                 </Switch>
             </Layout>
         </Router>
