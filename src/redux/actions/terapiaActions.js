@@ -98,7 +98,7 @@ export const putUpdateSesion = (idSesion, body) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.put(`api/terapia/updateSesion/${idSesion}`, body, config)
+    axios.put(`/api/terapia/updateSesion/${idSesion}`, body, config)
     .then(res => {
         dispatch({
             type: PUT_SESION_SUCCESS,
@@ -122,7 +122,7 @@ export const postCreateSesion = (body) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.post('/api/terapia/createTerapia', body, config)
+    axios.post('/api/terapia/createSesion', body, config)
     .then(res => {
         dispatch({
             type: ADD_SESION_SUCCESS,
