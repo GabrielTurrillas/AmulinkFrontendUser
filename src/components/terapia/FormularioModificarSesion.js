@@ -16,15 +16,16 @@ const FormularioModificarSesion = () => {
     const { terapia, pago, asistio, fechaSesion:fechaSesionDate, modalidad, notasSesion, fechaPago:fechaPagoDate } = sesion || {}
     
     useEffect(() => {
-        dispatch(getRetrieveSesion());
+        dispatch(getRetrieveSesion(idSesion));
         setFechaSesion(new Date(fechaSesionDate))
         setFechaPago(new Date(fechaPagoDate))
-    },[dispatch, fechaPagoDate, fechaSesionDate]);
+    },[dispatch, fechaPagoDate, fechaSesionDate, idSesion]);
 
     const onSubmit = (data) => {
         const { pago, asistio, modalidad, notasSesion } = data
         const body = JSON.stringify({terapia, pago, asistio, modalidad, notasSesion, fechaPago, fechaSesion})
-        dispatch(putUpdateSesion(idSesion, body));        
+        dispatch(putUpdateSesion(idSesion, body));
+        debugger      
     };
 
     return (
