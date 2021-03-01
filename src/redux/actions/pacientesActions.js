@@ -42,7 +42,7 @@ export const getRetrievePaciente = (idPaciente) => async dispatch => {
             'Accept': 'application/json'
         }
     };
-    axios.get(`/api/paciente/retrievePacienteView/${idPaciente}`, config)
+    axios.get(`/api/paciente/retrievePaciente/${idPaciente}`, config)
     .then(res => {
         dispatch({
             type: FETCH_PACIENTE_DETALLE_SUCCESS,
