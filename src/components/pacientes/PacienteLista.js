@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getListPaciente } from '../../redux/actions/pacientesActions';
-import { load_user } from '../../redux/actions/auth';
 import { Link } from 'react-router-dom';
 
 /* Containers
@@ -14,7 +13,6 @@ const PacienteLista = () => {
     const pacientes = useSelector(state => state.pacientesReducer.pacientes)
 
     useEffect(() => {
-        load_user();
         dispatch(getListPaciente());
     }, [dispatch])
     

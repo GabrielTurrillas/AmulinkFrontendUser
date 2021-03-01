@@ -17,7 +17,7 @@ export const getListPaciente = () => async dispatch => {
         }
     };
 
-    axios.get("/api/paciente/listTerapeutaPacienteView", config)
+    axios.get('/api/paciente/listTerapeutaPaciente', config)
     .then(res => {
         dispatch({
             type: FETCH_PACIENTES_SUCCESS,
@@ -28,7 +28,7 @@ export const getListPaciente = () => async dispatch => {
         dispatch ({
             type: FETCH_PACIENTES_FAILURE,
         })
-        console.log(err)
+        console.log('error',err)
     });
 };
 
