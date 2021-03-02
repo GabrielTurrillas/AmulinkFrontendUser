@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import DatePicker from "react-datepicker";
@@ -11,11 +12,16 @@ import "react-datepicker/dist/react-datepicker.css";
 */
 
 const FormularioPerfil = () => {
+    const history = useHistory();
     const perfil = useSelector(state => state.terapeutaReducer.perfil)
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const {register, handleSubmit, errors} = useForm();
 
+    const routeChange = () => {
+        let path = `perfil`;
+        history.push(path);
+    }
     useEffect(() => {
         dispatch(getRetrievePerfilTerapeuta());
     },[dispatch]);
@@ -27,6 +33,7 @@ const FormularioPerfil = () => {
         const { userAccount, rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero } = data
         const body = JSON.stringify({userAccount, rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, genero, fechaNacimiento});
         dispatch(putUpdatePerfil(body));
+        routeChange();
     };
 
     return (
@@ -162,7 +169,12 @@ const FormularioPerfil = () => {
                         </div>
                     </div>
                 </div>
-                <button className='mb-3 btn btn-success' type='submit'>Ingresar</button>
+                <button 
+                    className='mb-3 btn btn-success'
+                    type='submit'
+                    >
+                    Ingresar
+                    </button>
             </form>
         </Fragment>
     );
