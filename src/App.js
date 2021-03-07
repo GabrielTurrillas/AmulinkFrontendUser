@@ -19,6 +19,7 @@ import Layout from './hocs/Layout';
 import ModificarPerfil from './containers/terapeuta/ModificarPerfil';
 import ResumenMensual from './containers/informes/ResumenMensual';
 import ModificarSesion from './containers/pacientes/ModificarSesion';
+import PacienteListaTodosContainer from './containers/pacientes/PacienteListaTodosContainer';
 
 const App = () => (
     <Provider store={store}>
@@ -27,6 +28,7 @@ const App = () => (
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/pacientes' component={Pacientes} />
+                    <Route exact path='/listaPacientesTodos' component={PacienteListaTodosContainer} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/signup' component={Signup} />
                     <Route exact path='/reset-password' component={ResetPassword} />

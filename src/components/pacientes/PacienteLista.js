@@ -1,7 +1,9 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getListPaciente } from '../../redux/actions/pacientesActions';
 import { Link } from 'react-router-dom';
+import { getListPaciente } from '../../redux/actions/pacientesActions';
+import Pagination from './Pagination';
+import Pacientes from './Pacientes';
 
 /* Containers
     Pacientes.js
@@ -9,11 +11,16 @@ import { Link } from 'react-router-dom';
 */
 
 const PacienteLista = () => {
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pacientesPerPage] = useState(15);
     const dispatch = useDispatch();
     const pacientes = useSelector(state => state.pacientesReducer.pacientes)
 
     useEffect(() => {
+        setLoading(true);
         dispatch(getListPaciente());
+        setLoading(false);
     }, [dispatch])
     
     if (!pacientes || !pacientes.length) {
@@ -21,36 +28,50 @@ const PacienteLista = () => {
             <p>Spiner</p>
         ) 
     }
+
+    const indexOfLastPaciente = currentPage * pacientesPerPage;
+    const indexOfFirstPost = indexOfLastPaciente - pacientesPerPage;
+    const currentPacientes = pacientes.slice(indexOfFirstPost, indexOfLastPaciente);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
     return (
         <Fragment>
-            <div className='card'>
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Prevision</th>
-                            <th scope="col">Telefono</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Numero de Sesiones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {pacientes.map(({ id, nombre, apellidoPaterno, telefono, email, prevision }) =>
-                            <tr key={id} className='clickable-row'>
-                                <th scope="row">{id}</th>
-                                <td><Link to={"pacientes/"+id}>{nombre} {apellidoPaterno}</Link></td>
-                                <td><Link to={"pacientes/"+id}>{prevision}</Link></td>
-                                <td><Link to={"pacientes/"+id}>{telefono}</Link></td>
-                                <td><Link to={"pacientes/"+id}>{email}</Link></td>
-                                <td><Link to={"pacientes/"+id}>NumeroSesiones</Link></td>
+            <div className='card mt-4 container-fluid'>
+                <div className='row'>
+                    <table className="table table-hover">
+                        <thead>
+                            <tr className='d-flex'>
+                                <th className="col-1">Id</th>
+                                <th className="col-3">Nombre</th>
+                                <th className="col-2">Prevision</th>
+                                <th className="col-2">Telefono</th>
+                                <th className="col-2">Email</th>
+                                <th className="col-1 d-flex justify-content-end ml-5">Sesiones</th>
                             </tr>
-                        )}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <Pacientes
+                                pacientes={currentPacientes}
+                                loading={loading} 
+                            />
+                        </tbody>
+                    </table>
+                </div>
+                <div className='row d-flex'>
+                    <div className='col'>
+                        <Pagination 
+                            pacientesPerPage={pacientesPerPage}
+                            totalPacientes={pacientes.length} 
+                            paginate={paginate} />
+                    </div>
+                    <div className='col'>
+                        <Link className='btn btn-primary float-right' to='/listaPacientesTodos'>Todos los Pacientes</Link>
+                    </div>
+                </div>
             </div>
         </Fragment>
     ) 
-}
+};
 
 export default PacienteLista;
