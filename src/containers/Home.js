@@ -11,11 +11,6 @@ const Home = ({ isAuthenticated }) => {
             <Link className='btn btn-primary btn-lg mt-4' to='/login' role='button'>Login</Link>
         </Fragment>
     );
-    const showAdmin = () => (
-        <Fragment>
-            <p className='lead'>Admin</p>
-        </Fragment>
-    );
     const showHome = () => (
         <Fragment>
             <p className='lead'>Home</p>
@@ -24,7 +19,7 @@ const Home = ({ isAuthenticated }) => {
     return (
         <Fragment>
             <h1 className='display-4'>Amülink</h1>
-            {isAuthenticated ? showHome() : showAdmin()}
+            {isAuthenticated ? showHome() : <></>}
             {isAuthenticated ? hide() : showLoginButton()}
         </Fragment>
     );                      

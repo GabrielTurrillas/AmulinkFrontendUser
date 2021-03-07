@@ -40,7 +40,7 @@ const FormularioModificarSesion = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='row'>
                     <div className='form-group col-6'>
-                        <label htmlFor="fechaSesion" className='mr-3'>Fecha de Sesion</label>
+                        <h5>Fecha Sesion</h5>
                         <DatePicker
                             className='form-control' 
                             id='fechaSesion'
@@ -50,7 +50,7 @@ const FormularioModificarSesion = () => {
                             onChange={date => setFechaSesion(date)}
                         />
                     </div>
-                    <div className='form-group col-6'>
+                    <div className='form-group col-6 mt-4'>
                         <input
                             type="checkbox"
                             id="asistio"
@@ -63,20 +63,16 @@ const FormularioModificarSesion = () => {
                     </div>
                 </div>
                 <div className='row'>
-                    <div className='form-group col-6'>
-                        <input
-                            className='form-control' 
-                            type="text" 
-                            name="modalidad" 
-                            placeholder="Modalidad"
-                            defaultValue={modalidad}
-                            ref={register({
-                                required:'Campo "Modalidad" obligatorio',
-                            })}
-                        /> 
-                        {errors.apellidoMaterno && <p>{errors.apellidoMaterno.message}</p>}
+                    <div className='col-6'>
+                        <div className="form-group">
+                            <h5>Modalidad</h5>
+                            <select className="form-control" defaultValue={modalidad} ref={register} name='modalidad'>
+                                <option value='Online'>Online</option>
+                                <option value='Presencial'>Presencial</option>
+                            </select>
+                        </div>
                     </div>
-                    <div className='form-group col-6'>
+                    <div className='form-group col-6 mt-4'>
                         <input
                             type="checkbox"
                             id="pago"
@@ -90,6 +86,7 @@ const FormularioModificarSesion = () => {
                 </div>
                 <div className='row'>
                     <div className='form-group col-6'>
+                        <h5>Notas de la Sesion</h5>
                         <textarea
                             className='form-control' 
                             type="textarea"
@@ -100,7 +97,7 @@ const FormularioModificarSesion = () => {
                             })}
                         /> 
                     </div>
-                    <div className='form-group col-6'>
+                    <div className='form-group col-6 mt-4'>
                         <label htmlFor="fechaSesion" className='mr-3'>Fecha de Pago</label>
                         <DatePicker
                             className='form-control' 
