@@ -12,7 +12,6 @@ const PacienteDetalle = () => {
     const { id:idPaciente } = useParams();
     const dispatch = useDispatch();
     const paciente = useSelector(state => state.pacientesReducer.pacienteDetalle)
-    const terapia = useSelector(state => state.terapiaReducer.terapia);
 
     useEffect(() => {
         dispatch(getRetrievePaciente(idPaciente));
@@ -23,7 +22,9 @@ const PacienteDetalle = () => {
     },[dispatch, idPaciente]);
 
     
-    const { rut, nombre, apellidoPaterno, apellidoMaterno, telefono, email, fechaNacimiento, genero, direccion, comunaResidencia, ocupacionProfecion, prevision } = paciente
+    const { rut, nombre, apellidoPaterno, apellidoMaterno,
+            telefono, email, fechaNacimiento, genero, direccion,
+            comunaResidencia, prevision, captacion, motivoConsulta } = paciente
     const fechaNacimientoDate = new Date(fechaNacimiento);
 
     return (
@@ -70,18 +71,15 @@ const PacienteDetalle = () => {
                 </div>
                 <div className='row mt-3'>
                     <div className='col'>
-                        <p className='font-weight-light'>Ocupacion o Profecion: { ocupacionProfecion }</p>
+                        <p className='font-weight-light'>Tipo de Terapia: { prevision }</p>
                     </div>
                     <div className='col'>
-                        <p className='font-weight-light'>Tipo de Terapia: { prevision }</p>
+                        <p className='font-weight-light'>Captacion: { captacion }</p>
                     </div>
                 </div>
                 <div className='row mt-3'>
                     <div className='col'>
-                        <p className='font-weight-light'>Motivo de Consulta: { terapia.motivoConsulta }</p>
-                    </div>
-                    <div className='col'>
-                        <p className='font-weight-light'>Captacion: { terapia.captacion }</p>
+                        <p className='font-weight-light'>Motivo de Consulta: { motivoConsulta }</p>
                     </div>
                 </div>
         </Fragment>
