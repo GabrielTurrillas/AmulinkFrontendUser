@@ -141,19 +141,59 @@ const FormularioPerfil = () => {
                         {errors.email && <p>{errors.email.message}</p>}
                     </div>
                 </div>
-                <div className='row'>
-                    <div className='form-group col-6'>
-                        <input
-                            className='form-control' 
-                            type="text"
-                            name="genero" 
-                            placeholder="Genero"
-                            defaultValue={genero}
-                            ref={register({
-                                required:'Campo "Genero" obligatorio',
-                            })}
-                        /> 
-                    {errors.genero && <p>{errors.genero.message}</p>}
+                <div className='row mt-3 mb-4'>
+                    <div className='col-1'>
+                        <h5>Genero</h5>
+                    </div>
+                    <div className='col-5'>
+                        <div className="form-check">
+                            <input 
+                                className="form-check-input"
+                                type="radio"
+                                name="genero" 
+                                id="femenino"
+                                value='Femenino'
+                                defaultChecked={genero === 'Femenino' ? 'checked' : undefined}
+                                ref={register({
+                                    required:'Campo "Genero" obligatorio',
+                                })}
+                                />
+                            <label className="form-check-label" for="femenino">
+                                Femenino
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <input 
+                                className="form-check-input" 
+                                type="radio" 
+                                name="genero" 
+                                id="masculino"
+                                value='Masculino'
+                                defaultChecked={genero === 'Masculino' ? 'checked' : undefined}
+                                ref={register({
+                                    required:'Campo "Genero" obligatorio',
+                                })}
+                                />
+                            <label className="form-check-label" for="masculino">
+                                Masculino
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <input 
+                                className="form-check-input" 
+                                type="radio" 
+                                name="genero" 
+                                id="otro"
+                                value='Otro'
+                                defaultChecked={genero === 'Otro' ? 'checked' : undefined}
+                                ref={register({
+                                    required:'Campo "Genero" obligatorio',
+                                })}
+                                />
+                            <label className="form-check-label" for="otro">
+                                Otro
+                            </label>
+                        </div>
                     </div>
                     <div className='col-6'>
                         <div className='row'>
