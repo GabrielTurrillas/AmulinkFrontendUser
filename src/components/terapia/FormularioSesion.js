@@ -52,7 +52,8 @@ const FormularioSesion = () => {
                             <input
                                 type="checkbox"
                                 id="asistio"
-                                name="asistio" 
+                                name="asistio"
+                                checked
                                 ref={register({
                                 })}
                             /> 
