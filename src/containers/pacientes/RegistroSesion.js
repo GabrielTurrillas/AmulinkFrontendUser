@@ -13,17 +13,12 @@ const RegistroSesion = () => {
     },[dispatch, idPaciente])
     return (
         <Fragment>
-            <div className='row'>
+            <div className='row mb-4'>
                 <div className='col'>
                     <h3 className="display-4">Registro de Sesion</h3>
                 </div>
                 <div>
                     <p className="lead mb-5">{paciente.nombre} {paciente.apellidoPaterno}</p>
-                </div>
-            </div>
-            <div className='row'>
-                <div className='col'>
-                    <p className="lead mb-5">Registra una sesion</p>
                 </div>
             </div>
             <FormularioSesion />

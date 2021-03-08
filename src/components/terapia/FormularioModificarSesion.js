@@ -11,7 +11,7 @@ const FormularioModificarSesion = () => {
     const sesion = useSelector(state => state.terapiaReducer.sesion)
     const dispatch = useDispatch();
     const { id:idSesion } = useParams();
-    const {register, handleSubmit, errors} = useForm();
+    const {register, handleSubmit} = useForm();
     const [fechaSesion, setFechaSesion] = useState(new Date())
     const [fechaPago, setFechaPago] = useState(new Date())
     const { terapia, pago, asistio, fechaSesion:fechaSesionDate, modalidad, notasSesion, fechaPago:fechaPagoDate } = sesion || {}
@@ -40,7 +40,7 @@ const FormularioModificarSesion = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='row'>
                     <div className='form-group col-6'>
-                        <h5>Fecha Sesion</h5>
+                        <h5>Fecha de Sesion</h5>
                         <DatePicker
                             className='form-control' 
                             id='fechaSesion'
@@ -50,16 +50,39 @@ const FormularioModificarSesion = () => {
                             onChange={date => setFechaSesion(date)}
                         />
                     </div>
-                    <div className='form-group col-6 mt-4'>
-                        <input
-                            type="checkbox"
-                            id="asistio"
-                            name="asistio" 
-                            defaultChecked={asistio}
-                            ref={register({
-                            })}
-                        /> 
-                        <label htmlFor="asistio" className="ml-2">Asistio?</label>
+                    <div className='col mt-4'>
+                        <div className='form-group'>
+                            <input
+                                type="checkbox"
+                                id="pago"
+                                name="pago"
+                                defaultChecked={pago} 
+                                ref={register({
+                                })}
+                            /> 
+                            <label htmlFor="pago" className="ml-2">Pago?</label>
+                        </div>
+                        <div className='form-group'>
+                            <input
+                                type="checkbox"
+                                id="asistio"
+                                name="asistio" 
+                                defaultChecked={asistio}
+                                ref={register({
+                                })}
+                            /> 
+                            <label htmlFor="asistio" className="ml-2">Asistio?</label>
+                        </div>
+                        <div className='form-group'>
+                            <input
+                                type="checkbox"
+                                id="emisionBoleta"
+                                name="emisionBoleta"
+                                ref={register({
+                                })}
+                            /> 
+                            <label htmlFor="emisionBoleta" className="ml-2">Emision de Boleta</label>
+                        </div>
                     </div>
                 </div>
                 <div className='row'>
@@ -73,19 +96,19 @@ const FormularioModificarSesion = () => {
                         </div>
                     </div>
                     <div className='form-group col-6 mt-4'>
-                        <input
-                            type="checkbox"
-                            id="pago"
-                            name="pago"
-                            defaultChecked={pago} 
-                            ref={register({
-                            })}
-                        /> 
-                        <label htmlFor="pago" className="ml-2">Pago?</label>
+                        <label htmlFor="fechaPago" className='mr-3'>Fecha de Pago</label>
+                        <DatePicker
+                            className='form-control' 
+                            id='fechaPago' 
+                            name='fechaPago'
+                            dateFormat='dd/MM/yyyy'
+                            selected={fechaPago}
+                            onChange={date => setFechaPago(date)}
+                        />
                     </div>
                 </div>
                 <div className='row'>
-                    <div className='form-group col-6'>
+                    <div className='form-group col-12'>
                         <h5>Notas de la Sesion</h5>
                         <textarea
                             className='form-control' 
@@ -96,17 +119,6 @@ const FormularioModificarSesion = () => {
                             ref={register({
                             })}
                         /> 
-                    </div>
-                    <div className='form-group col-6 mt-4'>
-                        <label htmlFor="fechaSesion" className='mr-3'>Fecha de Pago</label>
-                        <DatePicker
-                            className='form-control' 
-                            id='fechaPago' 
-                            name='fechaPago'
-                            dateFormat='dd/MM/yyyy'
-                            selected={fechaPago}
-                            onChange={date => setFechaPago(date)}
-                        />
                     </div>
                 </div>
                 <button className='btn btn-success' type='submit' >Registrar</button>

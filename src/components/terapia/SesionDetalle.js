@@ -16,7 +16,7 @@ const SesionDetalle = () => {
         dispatch(getRetrieveSesion(idSesion));
     }, [dispatch, idSesion])
     
-    const { pago, asistio, fechaSesion, modalidad, notasSesion, fechaPago } = sesion
+    const { pago, asistio, fechaSesion, modalidad, notasSesion, fechaPago, emisionBoleta } = sesion
     const fechaSesionDate = new Date(fechaSesion)
     const fechaPagoDate = new Date(fechaPago)
 
@@ -41,6 +41,9 @@ const SesionDetalle = () => {
             <div className='row mt-3'>
                 <div className='col'>
                     <p className='font-weight-light'>Fecha de Pago: {fechaPagoDate.getDate()}/{fechaPagoDate.getMonth()+1}/{fechaPagoDate.getFullYear()}</p>
+                </div>
+                <div className='col'>
+                    <p className='font-weight-light'>Emision de Boleta: {emisionBoleta ? 'Si' : 'No'}</p>
                 </div>
             </div>
             <div className='row mt-3'>

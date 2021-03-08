@@ -24,7 +24,7 @@ const PacienteDetalle = () => {
     
     const { rut, nombre, apellidoPaterno, apellidoMaterno,
             telefono, email, fechaNacimiento, genero, direccion,
-            comunaResidencia, prevision, captacion, motivoConsulta } = paciente
+            comunaResidencia, prevision, captacion, motivoConsulta, valorSesion } = paciente
     const fechaNacimientoDate = new Date(fechaNacimiento);
 
     return (
@@ -80,6 +80,9 @@ const PacienteDetalle = () => {
                 <div className='row mt-3'>
                     <div className='col'>
                         <p className='font-weight-light'>Motivo de Consulta: { motivoConsulta }</p>
+                    </div>
+                    <div className='col'>
+                        <p className='font-weight-light'>Valor de la Sesion: { valorSesion }</p>
                     </div>
                 </div>
         </Fragment>

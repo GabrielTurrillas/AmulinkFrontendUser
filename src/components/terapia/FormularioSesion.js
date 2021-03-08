@@ -60,15 +60,25 @@ const FormularioSesion = () => {
                             <label htmlFor="asistio" className="ml-2">Asistio?</label>
                         </div>
                         <div className='form-group'>
-                        <input
-                            type="checkbox"
-                            id="pago"
-                            name="pago" 
-                            ref={register({
-                            })}
-                        /> 
-                        <label htmlFor="pago" className="ml-2">Pago?</label>
-                    </div>
+                            <input
+                                type="checkbox"
+                                id="pago"
+                                name="pago" 
+                                ref={register({
+                                })}
+                            /> 
+                            <label htmlFor="pago" className="ml-2">Pago?</label>
+                        </div>
+                        <div className='form-group'>
+                            <input
+                                type="checkbox"
+                                id="emisionBoleta"
+                                name="emisionBoleta"
+                                ref={register({
+                                })}
+                            /> 
+                            <label htmlFor="asistio" className="ml-2">Emision de Boleta</label>
+                        </div>
                     </div>
                 </div>
                 <div className='row'>

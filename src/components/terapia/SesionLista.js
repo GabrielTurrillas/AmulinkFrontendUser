@@ -34,10 +34,11 @@ const SesionLista = () => {
                             <th scope="col">Fecha Sesion</th>
                             <th scope="col">Asistencia</th>
                             <th scope="col">Pago</th>
+                            <th scope="col">Emision de Boleta</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {sesiones.map(({ id, asistio, fechaSesion, pago }) => {
+                        {sesiones.map(({ id, asistio, fechaSesion, pago, emisionBoleta }) => {
                                 const fechaSesionDate = new Date(fechaSesion);
                                 var pagoString
                                 if(pago) {
@@ -57,6 +58,7 @@ const SesionLista = () => {
                                         <td><Link to={"/pacientes/ficha_sesion/"+id}>{fechaSesionDate.getDate()}/{fechaSesionDate.getMonth()+1}/{fechaSesionDate.getFullYear()}</Link></td>
                                         <td><Link to={"/pacientes/ficha_sesion/"+id}>{asistioString}</Link></td>
                                         <td><Link to={"/pacientes/ficha_sesion/"+id}>{pagoString}</Link></td>
+                                        <td><Link to={"/pacientes/ficha_sesion/"+id}>{emisionBoleta ? 'Si' : 'No'}</Link></td>
                                     </tr>
                                 )
                             }

@@ -14,14 +14,26 @@ const PacienteDashBoard = (props) => {
     return (
     <Fragment>
         <div className='row'>
-            <div className='col'>
+            <div className='col-9'>
                 <h3 className='display-4'>Sesiones</h3>
                 <p className='lead'>Lista de Sesiones</p>
             </div>
             <div className='col mt-4'>
-                <p className='lead ml-4 float-right d-flex'>{paciente.nombre} {paciente.apellidoPaterno}</p>
-                <p className='lead ml-4 float-right d-flex'>{paciente.prevision}</p>
-                <p className='lead ml-4 float-right d-flex'>{paciente.valorSesion}</p>
+                <div className='row'>
+                    <div className='col'>
+                        <p className='lead'>{paciente.nombre} {paciente.apellidoPaterno}</p>
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col'>
+                        <p className='lead'>{paciente.prevision}</p>
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col'>
+                        <p className='lead'>Valor Sesion:{paciente.valorSesion}</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div className='row'>
