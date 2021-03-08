@@ -20,6 +20,8 @@ const PacienteDashBoard = (props) => {
             </div>
             <div className='col mt-4'>
                 <p className='lead ml-4 float-right d-flex'>{paciente.nombre} {paciente.apellidoPaterno}</p>
+                <p className='lead ml-4 float-right d-flex'>{paciente.prevision}</p>
+                <p className='lead ml-4 float-right d-flex'>{paciente.valorSesion}</p>
             </div>
         </div>
         <div className='row'>
