@@ -32,7 +32,7 @@ const PacienteListaTodos = () => {
                             <tr className='d-flex'>
                                 <th className="col-1">Id</th>
                                 <th className="col-3">Nombre</th>
-                                <th className="col-2">Prevision</th>
+                                <th className="col-2">Prevision o Programa</th>
                                 <th className="col-2">Telefono</th>
                                 <th className="col-2">Email</th>
                                 <th className="col-1 d-flex justify-content-end ml-5">Sesiones</th>
