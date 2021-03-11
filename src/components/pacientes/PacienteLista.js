@@ -2,6 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getListPaciente } from '../../redux/actions/pacientesActions';
+import { getListSesionTerapeuta } from '../../redux/actions/terapiaActions';
+import { getListTerapiaTerapeuta } from '../../redux/actions/terapiaActions';
 import Pagination from './Pagination';
 import Pacientes from './Pacientes';
 
@@ -16,10 +18,14 @@ const PacienteLista = () => {
     const [pacientesPerPage] = useState(15);
     const dispatch = useDispatch();
     const pacientes = useSelector(state => state.pacientesReducer.pacientes)
+    const sesiones = useSelector(state => state.terapiaReducer.sesionesTerapeuta)
+    const terapias = useSelector(state => state.terapiaReducer.terapias)
 
     useEffect(() => {
         setLoading(true);
         dispatch(getListPaciente());
+        dispatch(getListSesionTerapeuta());
+        dispatch(getListTerapiaTerapeuta());
         setLoading(false);
     }, [dispatch])
     
@@ -53,7 +59,9 @@ const PacienteLista = () => {
                         <tbody>
                             <Pacientes
                                 pacientes={currentPacientes}
-                                loading={loading} 
+                                loading={loading}
+                                sesiones= {sesiones}
+                                terapias={terapias}
                             />
                         </tbody>
                     </table>

@@ -8,6 +8,7 @@ import {
 const initialState = {
     numeroHorasMes:'',
     numeroPacientes:'',
+    numeroSesionesPaciente:'',
 };
 
 const terapeutaReducer = (state=initialState, action) => {
@@ -21,7 +22,7 @@ const terapeutaReducer = (state=initialState, action) => {
         case FETCH_NUMERO_HORAS_MES_FAILURE:
             return {
                 ...state,
-                errors: action
+                errors: action.payload
             }
         case FETCH_NUMERO_PACIENTES_SUCCESS:
             return {
@@ -32,7 +33,7 @@ const terapeutaReducer = (state=initialState, action) => {
         case FETCH_NUMERO_PACIENTES_FAILURE:
             return {
                 ...state,
-                errors: action
+                errors: action.payload
             }
         default:
             return state

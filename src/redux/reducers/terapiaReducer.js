@@ -9,13 +9,17 @@ import {
     FETCH_SESION_FAILURE,
     PUT_SESION_SUCCESS,
     PUT_SESION_FAILURE,
+    GET_SESIONES_TERAPEUTA_SUCCESS,
+    GET_SESIONES_TERAPEUTA_FAILURE,
+    GET_LIST_TERAPIA_TERAPEUTA_SUCCESS,
+    GET_LIST_TERAPIA_TERAPEUTA_FAILURE,
 } from '../actions/types';
 
 const initialState = {
     sesiones: [],
-    terapia: {
-        id:''
-    },
+    sesionesTerapeuta:[],
+    terapia: {},
+    terapias: [],
     sesion:[],
     errors:'',
 }
@@ -76,6 +80,28 @@ const terapiaReducer = (state=initialState, action) => {
             return {
                 ...state,
                 errors: action.payload,
+            }
+        case GET_SESIONES_TERAPEUTA_SUCCESS:
+            return {
+                ...state,
+                sesionesTerapeuta: action.payload,
+                errors:'',
+            }
+        case GET_SESIONES_TERAPEUTA_FAILURE:
+            return {
+                ...state,
+                errors:action.payload,
+            }
+        case GET_LIST_TERAPIA_TERAPEUTA_SUCCESS:
+            return {
+                ...state,
+                terapias: action.payload,
+                errors:'',
+            }
+        case GET_LIST_TERAPIA_TERAPEUTA_FAILURE:
+            return {
+                ...state,
+                errors:action.payload,
             }
         default:
             return state
